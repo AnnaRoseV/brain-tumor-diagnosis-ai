@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1024, initial-scale=1.0">
+<title>NeuroScan AI</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="brand">NeuroScan AI</div>
+  <div class="subtitle">Brain Tumor Diagnostic System</div>
+</header>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+  <div class="panel">
+
+    <h2>Patient Intake</h2>
+
+    <input id="name" placeholder="Patient Name">
+    <input id="age" placeholder="Age">
+    <input id="pid" placeholder="Patient ID">
+
+    <label>Upload MRI Scan</label>
+    <input type="file" id="fileInput" accept="image/*">
+
+    <button class="primary" onclick="analyze()">
+      Begin AI Analysis →
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+  <div class="panel">
+
+    <h2>Diagnosis Report</h2>
+
+    <div class="diag-layout">
+
+      <div class="diag-image">
+        <img id="inputImg">
+      </div>
+
+      <div class="diag-info">
+
+        <p><b>Tumor Type:</b> <span id="type"></span></p>
+        <p><b>Confidence:</b> <span id="conf"></span></p>
+        <p><b>Estimated Area:</b> <span id="area"></span>%</p>
+        <p><b>Severity:</b> <span id="severity"></span></p>
+
+        <h3>Interpretation</h3>
+        <p id="interp"></p>
+
+      </div>
+
+    </div>
+
+    <button class="primary" onclick="goTo(3)">
+      View Segmentation →
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+  <div class="panel">
+
+    <h2>Segmentation Results</h2>
+
+    <div class="seg-layout">
+
+      <div>
+        <p>Input</p>
+        <img id="segInputImg">
+      </div>
+
+      <div>
+        <p>Mask</p>
+        <img id="maskImg">
+      </div>
+
+      <div>
+        <p>Overlay</p>
+        <img id="overlayImg">
+      </div>
+
+    </div>
+
+    <button class="primary" onclick="goTo(4)">
+      Generate Clinical Report →
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div id="page4" class="page">
+  <div class="panel report">
+
+    <h2>Clinical Report</h2>
+
+    <p><b>Name:</b> <span id="r_name"></span></p>
+    <p><b>Age:</b> <span id="r_age"></span></p>
+    <p><b>ID:</b> <span id="r_pid"></span></p>
+
+    <hr>
+
+    <p>
+      AI detected <b><span id="r_type"></span></b>
+      tumor with confidence <b><span id="r_conf"></span></b>.
+      Area <b><span id="r_area"></span>%</b>.
+      Severity <b><span id="r_severity"></span></b>.
+    </p>
+
+    <h3>Interpretation</h3>
+    <p id="r_desc"></p>
+
+    <h3>Recommended Action</h3>
+    <p id="r_action"></p>
+
+    <img id="finalOverlay" style="width:300px">
+
+  </div>
+
+  <button class="secondary" onclick="window.print()">
+    Print Report
+  </button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
